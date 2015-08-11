@@ -4,7 +4,7 @@ sh install-terminal-font.sh
 # Vim config
 git submodule update --init --recursive
 cp -r vim-config ~/.vim
-cp .vim ~/.vim
+cp .vimrc ~/.vimrc
 
 # Git config
 cp .gitconfig ~/.gitconfig
