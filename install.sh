@@ -9,6 +9,13 @@ cd ..
 cp -r vim-config ~/.vim
 cp .vimrc ~/.vimrc
 
+## YouCompleteMe
+sudo apt-get install cmake python-dev
+old_pwd=`pwd`
+cd ~/.vim/bundle/YouCompleteMe
+./install.sh
+cd $old_pwd
+
 # Git config
 cp .gitconfig ~/.gitconfig
 
