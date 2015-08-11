@@ -22,6 +22,13 @@ cp .gitconfig ~/.gitconfig
 # Gnome terminal
 mkdir -p ~/.gconf/apps/gnome-terminal/profiles/m2-dev/
 cp m2-gnome-terminal.conf.xml ~/.gconf/apps/gnome-terminal/profiles/m2-dev/%gconf.xml
+new_profile='m2-dev'
+profile_list=`gconftool-2 --get /apps/gnome-terminal/global/profile_list | sed 's/$m2-dev//g' | sed 's/]$/,m2-dev]/'`
+gconftool-2 --set --type list --list-type string /apps/gnome-terminal/global/profile_list $entries
+
+# Redshift
+sudo apt-get install redshift
+cp .redshiftrc ~/.redshiftrc
 
 # xclip
 sudo apt-get install xclip
