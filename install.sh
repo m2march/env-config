@@ -3,6 +3,9 @@ sh install-terminal-font.sh
 
 # Vim config
 git submodule update --init --recursive
+cd vim-config
+sh install-ycm.sh
+cd ..
 cp -r vim-config ~/.vim
 cp .vimrc ~/.vimrc
 
