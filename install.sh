@@ -22,3 +22,10 @@ cp .gitconfig ~/.gitconfig
 # Gnome terminal
 mkdir -p ~/.gconf/apps/gnome-terminal/profiles/m2-dev/
 cp m2-gnome-terminal.conf.xml ~/.gconf/apps/gnome-terminal/profiles/m2-dev/%gconf.xml
+
+# xclip
+sudo apt-get install xclip
+echo '' >> ~/.bash_aliases
+echo '# xclip aliases' >> ~/.bash_aliases
+echo 'alias copy="xclip -i -selection clipboard"' >> ~/.bash_aliases
+echo 'alias paste="xclip -o -selection clipboard"' >> ~/.bash_aliases
