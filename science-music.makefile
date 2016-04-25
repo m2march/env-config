@@ -1,10 +1,19 @@
-.PHONY: all \
-	timidity music21
+TARGETS=timidty 
+.PHONY: all $(TARGETS)
 
-all: timidity music21
+all: timidity music21.done matplotlib.done
 
 timidity:
-	sudo apt-get install timidity
+ifeq (,$(shell which timidity))
+	sudo apt-get -y install timidity
+endif
 
-music21:
-	sudo python -m pip install music21
+music21.done:
+	sudo python -m pip install music21 && touch music21.done
+
+latex.done:
+	sudo apt-get install texlive-latex-base texlive-latex-extra && touch latex.done
+
+matplotlib.done:
+	sudo apt-get install python-matplotlib
+	touch matplotlib.done
