@@ -34,5 +34,5 @@ xclip:
 z:
 	echo '' >> ~/.bashrc
 	echo '# z (https://github.com/rupa/z)' >> ~/.bashrc
-	cp z ~/.z
-	echo '. ~/.z/z.sh' >> ~/.bashrc
+	cp z ~/.z-script
+	echo '. ~/.z-script/z.sh' >> ~/.bashrc
