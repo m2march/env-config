@@ -10,30 +10,30 @@ all: $(APP_TARGETS) $(DONE_TARGETS)
 
 byobu: 
 ifeq (,$(shell which byobu))
-	sudo apt-get -y install byobu
+	sudo apt -y install byobu
 endif
 
 vim:
 ifeq (,$(shell which vim))
-	sudo apt-get -y install vim
+	sudo apt -y install vim
 endif
 
 ipython: 
 ifeq (,$(shell which ipython))
-	sudo apt-get -y install ipython
+	sudo apt -y install ipython
 endif
 
 pip.done:
-	sudo apt-get install python-pip && touch pip.done
+	sudo apt install python-pip && touch pip.done
 
 tree:
 ifeq (,$(shell which tree))
-	sudo apt-get -y install tree
+	sudo apt -y install tree
 endif
 
 mc:
 ifeq (,$(shell which mc))
-	sudo apt-get -y install mc
+	sudo apt -y install mc
 endif
 
 htop:
@@ -43,12 +43,12 @@ endif
 
 sshfs:
 ifeq (,$(shell which sshfs))
-	sudo apt-get -y install sshfs
+	sudo apt -y install sshfs
 endif
 
 ack:
 ifeq (,$(shell which ack))
-	sudo apt-get -y install ack-grep
+	sudo apt -y install ack-grep
 endif
 
 google-chrome:
@@ -59,7 +59,7 @@ endif
 
 unity-tweak-tool:
 ifeq (,$(shell which unity-tweak-tool))
-	sudo apt-get -y install unity-tweak-tool
+	sudo apt -y install unity-tweak-tool
 endif
 
 workspace-config.done: | unity-tweak-tool
@@ -88,7 +88,7 @@ vim-config.done: | vim
 	
 
 YouCompleteMe.done: vim-config
-	sudo apt-get -y install cmake python-dev
+	sudo apt -y install cmake python-dev
 	cd ~/.vim/bundle/YouCompleteMe && ./install.sh
 	touch YouCompleteMe.done
 
@@ -100,13 +100,13 @@ gnome-terminal.done:
 
 redshift:
 ifeq (,$(shell which redshift))
-	sudo apt-get -y install redshift
+	sudo apt -y install redshift
 	cp .redshiftrc ~/.redshiftrc
 endif
 
 xclip:
 ifeq (,$(shell which xclip))
-	sudo apt-get -y install xclip
+	sudo apt -y install xclip
 	echo '' >> ~/.bash_aliases
 	echo '# xclip aliases' >> ~/.bash_aliases
 	echo 'alias copy="xclip -i -selection clipboard"' >> ~/.bash_aliases
