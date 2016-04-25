@@ -84,6 +84,7 @@ vim-config.done: | vim
 	git submodule update --init --recursive
 	if [ -d "~/.vim" ]; then mkdir ~/.vim; fi
 	cp -r vim-config/* ~/.vim
+	cp vim-config/.vimrc ~/.vimrc
 	touch vim-config.done
 	
 
