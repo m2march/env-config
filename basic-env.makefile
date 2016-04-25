@@ -1,12 +1,12 @@
-TARGETS=vim byobu ipython tree mc sshfs ack chrome \
+APP_TARGETS=vim byobu ipython tree mc sshfs ack chrome \
 	unity-tweak-tool spotify \
-	redshift xclip
+	redshift xclip htop
 DONE_TARGETS=workspace-config.done font.done \
 	YouCompleteMe.done vim-config.done z.done \
 	git-config.done pip.done
-.PHONY: all $(TARGETS) 
+.PHONY: all $(APP_TARGETS) 
 
-all: $(TARGETS) $(DONE_TARGETS)
+all: $(APP_TARGETS) $(DONE_TARGETS)
 
 byobu: 
 ifeq (,$(shell which byobu))
@@ -34,6 +34,11 @@ endif
 mc:
 ifeq (,$(shell which mc))
 	sudo apt-get -y install mc
+endif
+
+htop:
+ifeq (,$(shell which htop))
+	sudo apt install htop
 endif
 
 sshfs:
@@ -75,7 +80,7 @@ font.done:
 	sh install-terminal-font.sh
 	touch font.done
 
-vim-config.done: vim
+vim-config.done: | vim
 	git submodule update --init --recursive
 	if [ -d "~/.vim" ]; then mkdir ~/.vim; fi
 	cp -r vim-config/* ~/.vim
