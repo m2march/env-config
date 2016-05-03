@@ -115,8 +115,10 @@ ifeq (,$(shell which xclip))
 endif
 
 z.done:
+	cd z; git submodule update --init
 	echo '' >> ~/.bashrc
 	echo '# z (https://github.com/rupa/z)' >> ~/.bashrc
+	rm -rf ~/.z-script
 	cp -r z ~/.z-script
 	echo '. ~/.z-script/z.sh' >> ~/.bashrc
 	touch z.done
