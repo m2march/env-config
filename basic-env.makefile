@@ -1,6 +1,6 @@
 APP_TARGETS=vim byobu ipython tree mc sshfs ack chrome \
 	unity-tweak-tool spotify \
-	redshift xclip htop
+	redshift xclip htop openssh-server
 DONE_TARGETS=workspace-config.done font.done \
 	YouCompleteMe.done vim-config.done z.done \
 	git-config.done pip.done
@@ -15,7 +15,7 @@ endif
 
 vim:
 ifeq (,$(shell which vim))
-	sudo apt -y install vim
+	sudo apt -y install vim-nox-py2
 endif
 
 ipython: 
@@ -51,6 +51,11 @@ ifeq (,$(shell which ack))
 	sudo apt -y install ack-grep
 endif
 
+openssh-server:
+ifeq (,$(shell which sshd))
+	sudo apt -y install openssh-server
+endif
+
 google-chrome:
 ifeq (,$$(shell which $@))
 	sh install-scripts/chrome.sh
@@ -66,9 +71,9 @@ workspace-config.done: | unity-tweak-tool
 	@echo ""
 	@echo ">> Configure workspaces disposition..."
 	unity-tweak-tool
-	@read -p ">> Done?" done
+	@read -p ">> Done? " done
 	@echo ">> Configure workspace bidings... (keyboard settings)"
-	@read -p ">> Done?" done
+	@read -p ">> Done? " done
 	touch workspace-config.done
 
 spotify:
@@ -80,7 +85,7 @@ font.done:
 	sh install-terminal-font.sh
 	touch font.done
 
-vim-config.done: | vim
+vim-config.done: vim
 	git submodule update --init --recursive
 	if [ -d "~/.vim" ]; then mkdir ~/.vim; fi
 	cp -r vim-config/* ~/.vim
