@@ -1,7 +1,7 @@
 TARGETS=timidty ssh-key-at-github ~/science
 .PHONY: all $(TARGETS)
 
-all: timidity music21.done matplotlib.done ~/science
+all: timidity anaconda.done ~/science latex.done
 
 timidity:
 ifeq (,$(shell which timidity))
@@ -12,6 +12,10 @@ music21.done:
 	sudo python -m pip install music21 && touch music21.done
 	cp music21rc ~/.music21rc
 
+anaconda.done:
+	bash install-scripts/anaconda.sh
+	touch $@
+
 latex.done:
 	sudo apt install texlive-latex-base \
 		texlive-latex-extra \
@@ -19,15 +23,11 @@ latex.done:
 		texlive-science \
 		&& touch latex.done
 
-matplotlib.done:
-	sudo apt install python-matplotlib
-	touch matplotlib.done
-
 ssh-key-at-github:
 	make -f ssh-key.makefile
 	@echo ">> Configure new ssh key in github..."
 	@read -p ">> Done? " done
 
 ~/science: ssh-key-at-github
-	git clone git@gitlab.liaa.dc.uba.ar:mmiguel/science.git 
+	git clone git@gitlab.liaa.dc.uba.ar:mmiguel/science.git ~/science
 	cd $@ ; git submodule update --recursive
