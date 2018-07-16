@@ -107,7 +107,7 @@ gnome-terminal.done:
 redshift:
 ifeq (,$(shell which redshift))
 	sudo apt -y install redshift
-	cp .redshiftrc ~/.redshiftrc
+		cp redshift.conf ~/.config/redshift.conf
 endif
 
 xclip:
