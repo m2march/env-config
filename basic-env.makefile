@@ -127,3 +127,7 @@ z.done:
 	cp -r z ~/.z-script
 	echo '. ~/.z-script/z.sh' >> ~/.bashrc
 	touch z.done
+
+cool_aliases.done:
+	cat cool_aliases.sh >> ~/.bash_aliases	
+	touch cool_aliases.done
