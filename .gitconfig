@@ -12,9 +12,3 @@
 
 [core]
     editor = vim
-	attributesfile = /home/march/.gitattributes
-[filter "dropoutput_ipynb"]
-	clean = /usr/local/bin/ipynb_output_filter.py
-	smudge = cat
-[push]
-	default = simple
