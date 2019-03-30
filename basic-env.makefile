@@ -1,9 +1,10 @@
 APP_TARGETS=vim byobu ipython tree mc sshfs ack chrome \
 	unity-tweak-tool spotify \
 	redshift xclip htop openssh-server
-DONE_TARGETS=workspace-config.done font.done \
+DONE_TARGETS=font.done \
 	YouCompleteMe.done vim-config.done z.done \
 	git-config.done pip.done
+EXTRA_TARGETS=workspace-config.done 
 .PHONY: all $(APP_TARGETS) 
 
 all: $(APP_TARGETS) $(DONE_TARGETS)
@@ -15,7 +16,7 @@ endif
 
 vim:
 ifeq (,$(shell which vim))
-	sudo apt -y install vim-nox-py2
+	sudo apt -y install vim
 endif
 
 ipython: 
@@ -67,20 +68,6 @@ ifeq (,$(shell which unity-tweak-tool))
 	sudo apt -y install unity-tweak-tool
 endif
 
-workspace-config.done: | unity-tweak-tool
-	@echo ""
-	@echo ">> Configure workspaces disposition..."
-	unity-tweak-tool
-	@read -p ">> Done? " done
-	@echo ">> Configure workspace bidings... (keyboard settings)"
-	@read -p ">> Done? " done
-	touch workspace-config.done
-
-spotify:
-ifeq (, $(shell which spotify))
-	sh install-scripts/spotify.sh
-endif
-
 font.done:
 	sh install-terminal-font.sh
 	touch font.done
@@ -107,7 +94,6 @@ gnome-terminal.done:
 redshift:
 ifeq (,$(shell which redshift))
 	sudo apt -y install redshift
-		cp redshift.conf ~/.config/redshift.conf
 endif
 
 xclip:
@@ -131,3 +117,18 @@ z.done:
 cool_aliases.done:
 	cat cool_aliases.sh >> ~/.bash_aliases	
 	touch cool_aliases.done
+
+terminal_colors.done:
+	sudo apt install dconf-cli
+	echo "Select color codes: 90 13"
+	bash -c  $(wget -qO- https://git.io/vQgMr)
+
+workspace-config.done: | unity-tweak-tool
+	@echo ""
+	@echo ">> Configure workspaces disposition..."
+	unity-tweak-tool
+	@read -p ">> Done? " done
+	@echo ">> Configure workspace bidings... (keyboard settings)"
+	@read -p ">> Done? " done
+	touch workspace-config.done
+
