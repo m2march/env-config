@@ -1,0 +1,69 @@
+# Abrir cosas desde la consola (carpetas, archivos, lo que sea, es como dar
+# doble click)
+alias open="xdg-open"
+
+# xclip aliases
+alias copy="xclip -i -selection clipboard"
+alias paste="xclip -o -selection clipboard"
+
+# cd aliases
+alias ..="cd .."
+base=".."
+for i in $(seq 1 9)
+do
+    alias ..$i="cd "$base
+    base=$base"/.."
+done
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# reset display after ssh
+alias remir="export DISPLAY=:0"
+
+# sshs
+alias zorzal="ssh -L 9008:localhost:9008 -L 9010:eisendrache.liaa.inv.dc.uba.ar:22 mmiguel@zorzal.dc.uba.ar"
+alias eisen="ssh eisen"
+alias eisen_z="ssh -X -C -p 9010 march@localhost"
+alias eisen_fs="sshfs -p 9010 march@localhost:/home/march /home/march/eisen"
+alias eisen_l="ssh -X march@eisendrache.liaa.inv.dc.uba.ar -L 9008:localhost:9008 -L 8888:localhost:8888 -L 8000:localhost:8000 -L 8080:localhost:8080"
+alias tju="ssh -p 2222 mmiguel@tju.exp.dc.uba.ar"
+alias matemarote="ssh matemarote.org.ar"
+export GOOGLE_CLOUD=lopez-yorb.ddns.net
+alias cloud="ssh march@$GOOGLE_CLOUD"
+
+zorzalret() { 
+	ssh -R 9008:localhost:$1 mmiguel@zorzal.dc.uba.ar 
+}
+localret() {
+    ssh -R 9008:localhost:$1 localhost
+}
+
+# python
+alias notebook="jupyter notebook --profile=default --port=9008"
+alias notebook2="jupyter notebook --profile=notebook --port=9008"
+alias pyc="ipython --profile=console"
+alias pync="ipython --profile=default"
+
+# keyboard remap
+alias kremap="xmodmap -e 'keycode  48 = apostrophe quotedbl apostrophe quotedbl question questiondown' -e 'keycode  60 = period greater period greater slash dead_caron'"
+
+please() {
+	if [ "$1" ]; then
+		sudo $@
+	else
+		sudo "$BASH" -c "$(history -p !!)"
+	fi
+}
+
+alias clear_byobu="/usr/lib/byobu/include/tmux-detach-all-but-current-client"
+

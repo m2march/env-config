@@ -1,6 +1,27 @@
+# Steps
+
+* Install makefile: `apt install makefile`
+* Install apps: `make apps`
+* Install vim: `make vim`
+* Install cmake: `make cmake`
+* Install z: `make z`
+* Install chrome
+* Install miniconda
+* Install mendeley
+* Install spotify
+
 # My Vim Configuration
 
-Plugins:
+## Install:
+
+* `git submodule init vim-config`
+* `cd vim-config`
+* `sh install.sh`
+* Iniciar vim.
+* `:BundleInstall`
+* Compilar _YouCompleteMe_: `cd ~/.vim/bundle/YouCompleteMe && python install.py`
+
+## Plugins:
 
 * *pathogen* for easy plugin install
 * *ctrlp* for fuzzy file search. _Bindings:_
