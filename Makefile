@@ -1,4 +1,4 @@
-.PHONY: apps bash_aliases vim z cmake
+.PHONY: apps bash_aliases vim z cmake ipython_startup
 
 apps:
 	sudo apt install vim byobu tree sshfs ack xclip htop g++-8
@@ -17,3 +17,6 @@ cmake:
 z:
 	git submodule init z
 	echo ". ~/env-config/z/z.sh" >> ~/.bashrc
+
+ipython_startup:
+	cp ipython_startup.py ~/.ipython/profile_default/startup
