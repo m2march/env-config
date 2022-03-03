@@ -9,6 +9,7 @@
 * Install miniconda
 * Install mendeley
 * Install spotify
+* Ipython startup scripts: `make ipython_startup`
 
 # My Vim Configuration
 

@@ -38,3 +38,6 @@ alias eisen_fs="sshfs -p 9010 march@localhost:/home/march eisen"
 zorzalret() { 
 	ssh -R 9008:localhost:$1 mmiguel@zorzal.dc.uba.ar 
 }
+
+alias notebook="jupyter notebook"
+alias byobu_clear="/usr/lib/byobu/include/tmux-detach-all-but-current-client"
