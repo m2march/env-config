@@ -1,7 +1,7 @@
 .PHONY: apps bash_aliases vim z cmake ipython_startup
 
 apps:
-	sudo apt install vim byobu tree sshfs ack xclip htop g++-8
+	sudo apt install byobu tree sshfs ack xclip htop g++-8
 
 vim:
 	sudo add-apt-repository ppa:jonathonf/vim
@@ -15,8 +15,16 @@ cmake:
 	sudo snap install cmake --classic
 
 z:
-	git submodule init z
+	git submodule update --init z
 	echo ". ~/env-config/z/z.sh" >> ~/.bashrc
 
 ipython_startup:
 	cp ipython_startup.py ~/.ipython/profile_default/startup
+
+git_config:
+	cp .gitconfig ~/.git
+
+# https://gogh-co.github.io/Gogh/
+terminal_colors: 
+	echo 'Select themes: Ura, Hibrid'
+	bash -c  "$(wget -qO- https://git.io/vQgMr)"
