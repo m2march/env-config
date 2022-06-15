@@ -5,7 +5,7 @@ echo "Download Anaconda"
 read "Continue [ENTER]"
 echo "Install Anaconda"
 read "Continue [ENTER]"
-make apps vim z git_config terminal_colors
+make apps vim z git_config terminal_colors latex
 git submodule update --init vim-config
 cd vim-config && make
 echo "Install gnome-tweak-tool"

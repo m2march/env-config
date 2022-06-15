@@ -28,3 +28,6 @@ git_config:
 terminal_colors: 
 	echo 'Select themes: Ura, Hibrid'
 	bash -c  "$(wget -qO- https://git.io/vQgMr)"
+
+latex:
+	sudo apt install texlive-latex-recommended texlive-latex-extras texlive-luatex texlive-lang-spanish
