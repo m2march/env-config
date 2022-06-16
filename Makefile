@@ -31,3 +31,11 @@ terminal_colors:
 
 latex:
 	sudo apt install texlive-latex-recommended texlive-latex-extras texlive-luatex texlive-lang-spanish
+
+vim-config.done:
+	git submodule update --init --recursive
+	if [ -d "~/.vim" ]; then mkdir ~/.vim; fi
+	cp -r vim-config/* ~/.vim
+	cp vim-config/.vimrc ~/.vimrc
+	cd ~/.vim && sh install.sh
+	touch vim-config.done
