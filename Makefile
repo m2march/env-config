@@ -22,7 +22,7 @@ ipython_startup:
 	cp ipython_startup.py ~/.ipython/profile_default/startup
 
 git_config:
-	cp .gitconfig ~/.git
+	cp .gitconfig ~/.gitconfig
 
 # https://gogh-co.github.io/Gogh/
 terminal_colors: 
