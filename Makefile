@@ -21,6 +21,13 @@ z:
 ipython_startup:
 	cp ipython_startup.py ~/.ipython/profile_default/startup
 
+ipython_vim_bindings:
+	# You may need the following to create the directoy
+	mkdir -p `jupyter --data-dir`/nbextensions/vim_binding
+	# Not download a plugin file
+	jupyter nbextension install https://raw.githubusercontent.com/lambdalisue/jupyter-vim-binding/master/vim_binding.js --nbextensions=`jupyter --data-dir`/nbextensions/vim_binding
+	jupyter nbextension enable vim_binding/vim_binding
+
 git_config:
 	cp .gitconfig ~/.gitconfig
 
