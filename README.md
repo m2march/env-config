@@ -14,3 +14,7 @@ Plugins:
 * *python-mode* for pep8, definition search
    * pep8 checks are enabled on save
    * `,d` maps to _go to definition_
+
+# Juypter Vim Bindings:
+
+https://github.com/lambdalisue/jupyter-vim-binding
