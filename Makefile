@@ -33,7 +33,7 @@ git_config:
 
 # https://gogh-co.github.io/Gogh/
 terminal_colors: 
-	echo 'Select themes: Ura, Hibrid'
+	echo 'Select themes: Arthur, Hibrid'
 	bash -c  "$(wget -qO- https://git.io/vQgMr)"
 
 latex:
